@@ -1,1 +1,1 @@
-./build/example_glfw_vulkan
+./build/bin/go_score_counter
