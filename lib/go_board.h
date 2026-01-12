@@ -1,3 +1,7 @@
+// author name: Julien Dudas
+//
+
+
 #pragma once
 #include <string>
 #include <vector>
@@ -27,16 +31,22 @@ protected:
     int size;
     sgrid2d_t sgrid;
 public:
-    GoBoard(int size_);
-    void set_size(int size_);
+    GoBoard(const int size_);
+    ~GoBoard();
+
+    // Setters and getters
+    void set_size(const int size_);
     int get_size();
-    void set_sgrid(sgrid2d_t sgrid_);
+    void set_sgrid(const sgrid2d_t sgrid_);
     void set_sgrid_empty();
     sgrid2d_t get_sgrid();
-    void set_val_in_sgrid(StoneVal value, int i, int j);
-    // coordvec_t get_group(int i, int j);
+    void set_val_in_sgrid(const StoneVal value, const int i, const int j);
+
     std::map<StoneVal, coordvec_t> get_val_groups();
     groups_by_val_t get_groups();
+
+    // Static functions
+    static bool are_neighbours(const coord_t c1, const coord_t c2);
 };
 
 class GoGame {

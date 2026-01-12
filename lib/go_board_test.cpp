@@ -107,12 +107,10 @@ TEST_F(GoBoardTest, GetGroups) {
         << "Result different from expected groups:\n";
 }
 
-// TEST(GoBoardTest, GetGroupSimplest) {
-//     GoBoard b0(3);
-//     b0.set_val_in_sgrid(BLACK, 1, 2);
-//     b0.set_val_in_sgrid(BLACK, 1, 1);
-//     coordvec_t expected_coords = {{1, 2}, {1, 1}};
-//     EXPECT_EQ(b0.get_group(1, 1), expected_coords)
-//         << "b0.grid value incorrect."  << std::endl;
-//         // << "b0.grid value:\n" << sgrid2d_tostring(b0.get_sgrid()) << std::endl;
-// }
+TEST_F(GoBoardTest, AreNeighbours) {
+    coord_t c1 = {3, 5};
+    coord_t c2 = {2, 5};
+    coord_t c3 = {3, 3};
+    EXPECT_TRUE(GoBoard::are_neighbours(c1, c2));
+    EXPECT_FALSE(GoBoard::are_neighbours(c1, c3));
+}
