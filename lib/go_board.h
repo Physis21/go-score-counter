@@ -9,9 +9,9 @@
 #include <algorithm>
 
 enum StoneVal {
-    EMPTY,
-    BLACK,
-    WHITE
+    EMPTY=0,
+    BLACK=1,
+    WHITE=2
 };
 
 // sgrid as in "Stone Grid".

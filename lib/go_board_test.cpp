@@ -74,9 +74,9 @@ TEST_F(GoBoardTest, GetValGroups) {
     };
     (*small_b_ptr).set_sgrid(sgrid_);
     std::map<StoneVal, coordvec_t> expected_val_groups = {
+        {EMPTY, {{1, 0}, {1, 1}, {2, 2}}},
         {BLACK, {{0, 0}, {0, 1}, {2, 0}}},
-        {WHITE, {{0, 2}, {1, 2}, {2, 1}}},
-        {EMPTY, {{1, 0}, {1, 1}, {2, 2}}}
+        {WHITE, {{0, 2}, {1, 2}, {2, 1}}}
     };
     EXPECT_EQ((*small_b_ptr).get_val_groups(), expected_val_groups)
         << "Value group returned is not as expected." << std::endl;
@@ -94,13 +94,13 @@ TEST_F(GoBoardTest, GetGroups) {
             {0, {{1, 0}, {1, 1}}},
             {1, {{2, 2},}}
         }},
-        {WHITE, {
-            {0, {{0, 2}, {1, 2}}},
-            {1, {{2, 1},}}
-        }},
         {BLACK, {
             {0, {{0, 0}, {0, 1}}},
             {1, {{2, 0},}}
+        }},
+        {WHITE, {
+            {0, {{0, 2}, {1, 2}}},
+            {1, {{2, 1},}}
         }}
     };
     ASSERT_EQ((*small_b_ptr).get_groups(), expected_groups)

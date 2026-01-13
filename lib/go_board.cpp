@@ -1,3 +1,4 @@
+#include <cstdio>
 #include <string>
 #include <vector>
 #include <assert.h>
@@ -85,13 +86,12 @@ groups_by_val_t GoBoard::get_groups() {
         int cevi; // current evaluated vector index.
         group_id_t group_id = -1;
         for (cevi = 0; cevi < cfsv.size(); cevi++) {
-            // TODO: The way I define groups is not right.
-            // TODO: The last value ({2,2}) in test is never explored.
+            // Check if cfsv[cevi] is in coords_already_in_group.
             if (std::find(coords_already_in_group.begin(), coords_already_in_group.end(), cfsv[cevi]) != coords_already_in_group.end()) {
-                // coords_already_in_group contains cep.
                 continue; // look at next value.
             } else {
                 group_id++; // Recognize that this is a different group, and create a new one.
+                output[stone_val][group_id].push_back(cfsv[cevi]);
                 coords_already_in_group.push_back(cfsv[cevi]);
             }
             // Simplest (and maybe most efficient) way to iterate on cfsv at all indexes except cevi.
