@@ -75,11 +75,7 @@ std::map<StoneVal, coordvec_t> GoBoard::get_val_groups() {
 groups_by_val_t GoBoard::get_groups() {
     std::map<StoneVal, coordvec_t> val_groups = get_val_groups();
     coordvec_t coords_already_in_group = {};
-    groups_by_val_t output = {
-        {EMPTY, {}},
-        {BLACK, {}},
-        {WHITE, {}}
-    };
+    groups_by_val_t output = {};
     for (const auto my_pair : val_groups) {
         StoneVal stone_val = my_pair.first;
         coordvec_t cfsv = my_pair.second; // Vector of coordinates for a stone value.
@@ -91,19 +87,20 @@ groups_by_val_t GoBoard::get_groups() {
                 continue; // look at next value.
             } else {
                 group_id++; // Recognize that this is a different group, and create a new one.
-                output[stone_val][group_id].push_back(cfsv[cevi]);
+                output.insert({{stone_val, group_id}, {}});
+                output[{stone_val, group_id}].push_back(cfsv[cevi]);
                 coords_already_in_group.push_back(cfsv[cevi]);
             }
             // Simplest (and maybe most efficient) way to iterate on cfsv at all indexes except cevi.
             for (int i = cevi; i < cfsv.size(); i++) {
                 if (are_neighbours(cfsv[cevi], cfsv[i])) {
-                    output[stone_val][group_id].push_back(cfsv[i]);
+                    output[{stone_val, group_id}].push_back(cfsv[i]);
                     coords_already_in_group.push_back(cfsv[i]); // This stone is now already categorized in a group.
                 }
                             }
             for (int i = cevi; i >= 0; i--) {
                 if (are_neighbours(cfsv[cevi], cfsv[i])) {
-                    output[stone_val][group_id].push_back(cfsv[i]);
+                    output[{stone_val, group_id}].push_back(cfsv[i]);
                     coords_already_in_group.push_back(cfsv[i]); // This stone is now already categorized in a group.
                 }
             }

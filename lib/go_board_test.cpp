@@ -90,18 +90,12 @@ TEST_F(GoBoardTest, GetGroups) {
     };
     (*small_b_ptr).set_sgrid(sgrid_);
     groups_by_val_t expected_groups = {
-        {EMPTY, {
-            {0, {{1, 0}, {1, 1}}},
-            {1, {{2, 2},}}
-        }},
-        {BLACK, {
-            {0, {{0, 0}, {0, 1}}},
-            {1, {{2, 0},}}
-        }},
-        {WHITE, {
-            {0, {{0, 2}, {1, 2}}},
-            {1, {{2, 1},}}
-        }}
+        {{EMPTY, 0}, {{1, 0}, {1, 1}}},
+        {{EMPTY, 1}, {{2, 2},}},
+        {{BLACK, 0}, {{0, 0}, {0, 1}}},
+        {{BLACK, 1}, {{2, 0},}},
+        {{WHITE, 0}, {{0, 2}, {1, 2}}},
+        {{WHITE, 1}, {{2, 1},}},
     };
     ASSERT_EQ((*small_b_ptr).get_groups(), expected_groups)
         << "Result different from expected groups:\n";
