@@ -5,5 +5,8 @@
 #include "go_board.h"
 
 namespace MyApp {
+    // Render the full UI
     void RenderUI();
+    // Display the Go board
+    void DisplayGoBoard(GoBoard b);
 }
