@@ -8,10 +8,14 @@ add_subdirectory(glfw binary_dir EXCLUDE_FROM_ALL)
 include_directories(glfw/include)
 
 # Use vulkan headers from glfw:
+# (Maybe I don't need this anymore)
 include_directories(glfw/deps)
 
-# Include Google test using FetchContent.
+# Include Google test.
 add_subdirectory(googletest)
+
+# Add stb library
+add_subdirectory(stb_image)
 
 
 

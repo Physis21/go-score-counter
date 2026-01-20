@@ -10,17 +10,21 @@ target_link_libraries(example_glfw_opengl
   PRIVATE
     glfw
     OpenGL::OpenGL
-    # Vulkan::Vulkan
     imgui
 )
 
 # Create app.
 add_executable(go_score_counter go_score_counter.cpp application.cpp)
+target_sources(go_score_counter
+  PRIVATE
+    go_score_counter.cpp
+    application.cpp
+)
 target_link_libraries(go_score_counter
   PRIVATE
     glfw
     OpenGL::OpenGL
-    # Vulkan::Vulkan
+    stb_image
     imgui
     go_board
 )

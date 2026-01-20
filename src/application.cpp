@@ -1,6 +1,4 @@
 #include "application.h"
-#include "go_board.h"
-#include "imgui.h"
 
 namespace MyApp {
 
